@@ -20,6 +20,6 @@ public class HelloWorldJob implements Job {
 
         //LOG.info("Hello world job start");
         //LOG.info("callbackData : " + info.getCallbackData());
-        LOG.info("Remaining fire count is '{}' : " + info.getRemainingFireCount());
+        LOG.info("Remaining fire count is '{}'", info.getRemainingFireCount());
     }
 }

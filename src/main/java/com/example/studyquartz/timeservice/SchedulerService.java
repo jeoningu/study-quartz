@@ -97,8 +97,22 @@ public class SchedulerService {
                 LOG.error("Failed to find timer with ID '{}'", timerId);
                 return ;
             }
+
             jobDetail.getJobDataMap().put(timerId, info);
 
+            /*
+             scheduler.addJob
+              역할 : JobStore 에 jobDetail 반영하기 위함.
+              사용하는 이유 : JobStore 을 DB 방식 jdbcJobStore(type 설정을 jdbc) 로 사용할 때는 변경된 jobDetail 을 유지시키기 위해 JobStore 에도 반영을 해야한다.
+               참고로 말하자면 JobStore 을 RamJobStore (store-type 설정을 memory)로 사용할 때는 변경된 jobDetail 을 JobStore 에 반영하지 않아도 유지된다.
+
+               JdbcJobStore 방식을 사용하고 JobStore 에 JobDetail 을 담아주면 job 이 동작하다가 서버가 중지되어도 DB 에서 정보를 유지하고 있는다.
+               서버를 다시 시작하면 진행 중이던 job 이 다시 동작한다. 이 때 시간,반복횟수에 따라서 어떻게 동작할 지는 따로 설정할 수 있는 것 같다.
+               아마도 Misfire Instructions 처리?
+
+              # application.properties - spring.quartz.job-store-type=jdbc
+             */
+            scheduler.addJob(jobDetail, true, true);
         } catch (SchedulerException e) {
             LOG.error(e.getMessage(), e);
         }

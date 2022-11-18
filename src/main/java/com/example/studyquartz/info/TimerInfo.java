@@ -1,6 +1,8 @@
 package com.example.studyquartz.info;
 
-public class TimerInfo {
+import java.io.Serializable;
+
+public class TimerInfo implements Serializable {  // implements Serializable : 객체를 가지고 외부( 예를 들면 DB )와 통신하기 위해 직렬화 해준다
     private int totalFireCount; // timer가 몇번 실행될 것인지
     private int remainingFireCount; //남은 실행 횟수?
     private boolean runForever; // 영원히 실행되게 할건지(영원히 실행되게 할 거라면 totalFierCount는 필요없음)
