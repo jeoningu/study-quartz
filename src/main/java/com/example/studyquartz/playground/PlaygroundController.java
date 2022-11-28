@@ -38,6 +38,4 @@ public class PlaygroundController {
         return service.deleteTimer(timerId);
     }
 
-
-
 }

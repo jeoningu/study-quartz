@@ -29,7 +29,7 @@ public class SchedulerService {
     }
 
     /**
-     * 작업클래스와 시간정보로 스케줄을 만든다.
+     * 작업클래스와 시간정보로 schedule 을 실행한다.
      */
     public void schedule(Class jobClass, TimerInfo info) {
         final JobDetail jobDetail = TimerUtils.buildJobDetail(jobClass, info);

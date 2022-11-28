@@ -8,7 +8,7 @@ public class TimerInfo implements Serializable {  // implements Serializable : �
     private boolean runForever; // 영원히 실행되게 할건지(영원히 실행되게 할 거라면 totalFierCount는 필요없음)
     private long repeatIntervalMs; // 몇 Ms 마다 반복할지
     private long initialOffsetMs; // 0으로 하면 즉시 실행 100으로 하면 100Ms 뒤 실행
-    private String callbackData; //
+    private String callbackData; // callbackData
 
     public int getTotalFireCount() {
         return totalFireCount;
